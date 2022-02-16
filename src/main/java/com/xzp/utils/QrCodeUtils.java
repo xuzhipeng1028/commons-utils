@@ -15,7 +15,7 @@ import java.util.Map;
  * @author xuzhipeng
  * @date 2021/6/11
  */
-public final class QrCodeUtil {
+public final class QrCodeUtils {
 
     private static final String CHARSET = "utf-8";
     /**
@@ -23,7 +23,7 @@ public final class QrCodeUtil {
      */
     private static final int QRCODE_SIZE = 300;
 
-    private QrCodeUtil(){
+    private QrCodeUtils(){
         throw new UnsupportedOperationException();
     }
 
