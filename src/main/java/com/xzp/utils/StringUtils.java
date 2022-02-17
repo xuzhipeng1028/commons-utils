@@ -10,7 +10,7 @@ public final class StringUtils {
     public static final String EMPTY = "";
 
     private StringUtils(){
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("Can't instantiate a utility class");
     }
 
     /**

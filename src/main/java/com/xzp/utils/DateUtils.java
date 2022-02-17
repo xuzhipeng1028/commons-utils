@@ -20,7 +20,7 @@ public final class DateUtils {
     public static final FastDateFormat FAST_DATE_FORMAT_YYYY_MM_DD_HH_MM_SS = FastDateFormat.getInstance(PATTERN_YYYY_MM_DD_HH_MM_SS);
 
     private DateUtils(){
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("Can't instantiate a utility class");
     }
 
 }

@@ -24,7 +24,7 @@ public final class QrCodeUtils {
     private static final int QRCODE_SIZE = 300;
 
     private QrCodeUtils(){
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("Can't instantiate a utility class");
     }
 
     public static BufferedImage createImage(String content) throws Exception {
