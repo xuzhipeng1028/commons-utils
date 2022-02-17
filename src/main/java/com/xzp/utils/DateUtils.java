@@ -1,5 +1,6 @@
 package com.xzp.utils;
 
+import com.xzp.common.constants.CommonConstants;
 import org.apache.commons.lang3.time.FastDateFormat;
 
 /**
@@ -20,7 +21,7 @@ public final class DateUtils {
     public static final FastDateFormat FAST_DATE_FORMAT_YYYY_MM_DD_HH_MM_SS = FastDateFormat.getInstance(PATTERN_YYYY_MM_DD_HH_MM_SS);
 
     private DateUtils(){
-        throw new UnsupportedOperationException("Can't instantiate a utility class");
+        throw new UnsupportedOperationException(CommonConstants.INSTANTIATE_UTILITY_CLASS_EXCEPTION);
     }
 
 }

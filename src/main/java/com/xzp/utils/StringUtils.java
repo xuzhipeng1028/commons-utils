@@ -1,5 +1,7 @@
 package com.xzp.utils;
 
+import com.xzp.common.constants.CommonConstants;
+
 /**
  * 字符串工具类
  * @author xuzhipeng
@@ -7,10 +9,8 @@ package com.xzp.utils;
  */
 public final class StringUtils {
 
-    public static final String EMPTY = "";
-
     private StringUtils(){
-        throw new UnsupportedOperationException("Can't instantiate a utility class");
+        throw new UnsupportedOperationException(CommonConstants.INSTANTIATE_UTILITY_CLASS_EXCEPTION);
     }
 
     /**
@@ -28,7 +28,7 @@ public final class StringUtils {
      * @return String
      */
     public static String defaultEmptyIfNull(Object obj){
-        return defaultStringIfNull(obj,EMPTY);
+        return defaultStringIfNull(obj,CommonConstants.EMPTY);
     }
 
     /**
