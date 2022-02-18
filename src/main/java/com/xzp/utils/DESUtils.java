@@ -66,7 +66,9 @@ public final class DESUtils {
      * @throws Exception 异常
      */
     private static String handle(String password,String iv,byte[] bytes,int mode) throws Exception {
-        Key secretKey = generateKey(password);
+        DESKeySpec desKeySpec = new DESKeySpec(password.getBytes(StandardCharsets.UTF_8));
+        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(ALGORITHM);
+        Key secretKey = keyFactory.generateSecret(desKeySpec);
         Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
         cipher.init(mode, secretKey, new IvParameterSpec(iv.getBytes(StandardCharsets.UTF_8)));
         switch (mode){
@@ -77,18 +79,6 @@ public final class DESUtils {
             default:
                 throw new InvalidParameterException("Invalid operation mode");
         }
-    }
-
-    /**
-     * 生成KEY
-     * @param password 密码，长度不能够小于8位
-     * @return Key
-     * @throws Exception 异常
-     */
-    private static Key generateKey(String password) throws Exception {
-        DESKeySpec dks = new DESKeySpec(password.getBytes(StandardCharsets.UTF_8));
-        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(ALGORITHM);
-        return keyFactory.generateSecret(dks);
     }
 
 }
