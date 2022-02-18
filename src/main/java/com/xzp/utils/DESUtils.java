@@ -26,7 +26,7 @@ public final class DESUtils {
     /**
      * 加密/解密算法-工作模式-填充模式
      */
-    private static final String CIPHER_ALGORITHM = "DES/CBC/PKCS5Padding";
+    private static final String DEFAULT_CIPHER_ALGORITHM  = "DES/CBC/PKCS5Padding";
 
     private DESUtils(){
         throw new UnsupportedOperationException(CommonConstants.INSTANTIATE_UTILITY_CLASS_EXCEPTION);
@@ -67,7 +67,7 @@ public final class DESUtils {
      */
     private static String handle(String password,String iv,byte[] bytes,int mode) throws Exception {
         Key secretKey = generateKey(password);
-        Cipher cipher = Cipher.getInstance(CIPHER_ALGORITHM);
+        Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
         cipher.init(mode, secretKey, new IvParameterSpec(iv.getBytes(StandardCharsets.UTF_8)));
         switch (mode){
             case Cipher.ENCRYPT_MODE:
