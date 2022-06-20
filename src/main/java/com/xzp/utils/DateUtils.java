@@ -137,4 +137,284 @@ public final class DateUtils {
         return list;
     }
 
+    /**
+     * 获取本周周一的开始时间
+     *
+     * @param date 日期
+     * @return {@link Date}
+     */
+    public static Date getMondayStartTimeOfThisWeek(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        // 获得当前日期是一个星期的第几天
+        int dayWeek = cal.get(Calendar.DAY_OF_WEEK);
+        if (1 == dayWeek) {
+            cal.add(Calendar.DAY_OF_MONTH, -1);
+        }
+        // 设置一个星期的第一天，按中国的习惯一个星期的第一天是星期一
+        cal.setFirstDayOfWeek(Calendar.MONDAY);
+        // 获得当前日期是一个星期的第几天
+        int day = cal.get(Calendar.DAY_OF_WEEK);
+        // 根据日历的规则，给当前日期减去星期几与一个星期第一天的差值
+        cal.add(Calendar.DATE, cal.getFirstDayOfWeek() - day);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取本周周一的开始时间
+     *
+     * @return {@link Date}
+     */
+    public static Date getMondayStartTimeOfThisWeek() {
+        return getMondayStartTimeOfThisWeek(new Date());
+    }
+
+    /**
+     * 获取本周周一的结束时间
+     *
+     * @param date 日期
+     * @return {@link Date}
+     */
+    public static Date getMondayEndTimeOfThisWeek(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getMondayStartTimeOfThisWeek(date));
+        cal.set(Calendar.HOUR_OF_DAY, 23);
+        cal.set(Calendar.MINUTE, 59);
+        cal.set(Calendar.SECOND, 59);
+        cal.set(Calendar.MILLISECOND, 999);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取本周周一的结束时间
+     *
+     * @return {@link Date}
+     */
+    public static Date getMondayEndTimeOfThisWeek(){
+        return getMondayEndTimeOfThisWeek(new Date());
+    }
+
+    /**
+     * 获取本周周日的开始时间
+     *
+     * @param date 日期
+     * @return {@link Date}
+     */
+    public static Date getSundayStartTimeOfThisWeek(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getMondayStartTimeOfThisWeek(date));
+        cal.add(Calendar.DATE, 6);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取本周周日的开始时间
+     *
+     * @return {@link Date}
+     */
+    public static Date getSundayStartTimeOfThisWeek(){
+        return getSundayStartTimeOfThisWeek(new Date());
+    }
+
+    /**
+     * 获取本周周日的结束时间
+     *
+     * @return {@link Date}
+     */
+    public static Date getSundayEndTimeOfThisWeek(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getMondayEndTimeOfThisWeek(date));
+        cal.add(Calendar.DATE, 6);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取本周周日的结束时间
+     *
+     * @return {@link Date}
+     */
+    public static Date getSundayEndTimeOfThisWeek(){
+        return getSundayEndTimeOfThisWeek(new Date());
+    }
+
+    /**
+     * 获取上周周一的开始时间
+     *
+     * @param date 日期
+     * @return {@link Date}
+     */
+    public static Date getMondayStartTimeOfLastWeek(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getMondayStartTimeOfThisWeek(date));
+        cal.add(Calendar.DATE, -7);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取上周周一的开始时间
+     *
+     * @return {@link Date}
+     */
+    public static Date getMondayStartTimeOfLastWeek(){
+        return getMondayStartTimeOfLastWeek(new Date());
+    }
+
+    /**
+     * 获取上周周一的结束时间
+     *
+     * @param date 日期
+     * @return {@link Date}
+     */
+    public static Date getMondayEndTimeOfLastWeek(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getMondayEndTimeOfThisWeek(date));
+        cal.add(Calendar.DATE, -7);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取上周周一的结束时间
+     *
+     * @return {@link Date}
+     */
+    public static Date getMondayEndTimeOfLastWeek(){
+        return getMondayEndTimeOfLastWeek(new Date());
+    }
+
+    /**
+     * 获取上周周日的开始时间
+     *
+     * @param date 日期
+     * @return {@link Date}
+     */
+    public static Date getSundayStartTimeOfLastWeek(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getSundayStartTimeOfThisWeek(date));
+        cal.add(Calendar.DATE, -7);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取上周周日的开始时间
+     *
+     * @return {@link Date}
+     */
+    public static Date getSundayStartTimeOfLastWeek(){
+        return getSundayStartTimeOfLastWeek(new Date());
+    }
+
+    /**
+     * 获取上周周日的结束时间
+     *
+     * @param date 日期
+     * @return {@link Date}
+     */
+    public static Date getSundayEndTimeOfLastWeek(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getSundayEndTimeOfThisWeek(date));
+        cal.add(Calendar.DATE, -7);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取上周周日的结束时间
+     *
+     * @return {@link Date}
+     */
+    public static Date getSundayEndTimeOfLastWeek(){
+        return getSundayEndTimeOfLastWeek(new Date());
+    }
+
+    /**
+     * 获取下周周一的开始时间
+     *
+     * @param date 日期
+     * @return {@link Date}
+     */
+    public static Date getMondayStartTimeOfNextWeek(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getMondayStartTimeOfThisWeek(date));
+        cal.add(Calendar.DATE, 7);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取下周周一的开始时间
+     *
+     * @return {@link Date}
+     */
+    public static Date getMondayStartTimeOfNextWeek(){
+        return getMondayStartTimeOfNextWeek(new Date());
+    }
+
+    /**
+     * 获取下周周一的结束时间
+     *
+     * @param date 日期
+     * @return {@link Date}
+     */
+    public static Date getMondayEndTimeOfNextWeek(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getMondayEndTimeOfThisWeek(date));
+        cal.add(Calendar.DATE, 7);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取下周周一的结束时间
+     *
+     * @return {@link Date}
+     */
+    public static Date getMondayEndTimeOfNextWeek(){
+        return getMondayEndTimeOfNextWeek(new Date());
+    }
+
+    /**
+     * 获取下周周日的开始时间
+     *
+     * @param date 日期
+     * @return {@link Date}
+     */
+    public static Date getSundayStartTimeOfNextWeek(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getSundayStartTimeOfThisWeek(date));
+        cal.add(Calendar.DATE, 7);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取下周周日的开始时间
+     *
+     * @return {@link Date}
+     */
+    public static Date getSundayStartTimeOfNextWeek(){
+        return getSundayStartTimeOfNextWeek(new Date());
+    }
+
+    /**
+     * 获取下周周日的结束时间
+     *
+     * @param date 日期
+     * @return {@link Date}
+     */
+    public static Date getSundayEndTimeOfNextWeek(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getSundayEndTimeOfThisWeek(date));
+        cal.add(Calendar.DATE, 7);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取下周周日的结束时间
+     *
+     * @return {@link Date}
+     */
+    public static Date getSundayEndTimeOfNextWeek(){
+        return getSundayEndTimeOfNextWeek(new Date());
+    }
+
 }
